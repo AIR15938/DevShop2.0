@@ -21,7 +21,7 @@ namespace DevShop2.Models
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 2, CategoryName = "Back-end" });
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 3, CategoryName = "Programming Languages" });
 
-            //seed pies
+            //seed courses
 
             modelBuilder.Entity<Course>().HasData(new Course
             {
