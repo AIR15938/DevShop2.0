@@ -25,7 +25,9 @@ namespace DevShop2
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICourseRepository, CourseRepository>();
-
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddHttpContextAccessor();
+            services.AddSession();
             services.AddControllersWithViews();
         }
 
@@ -39,7 +41,8 @@ namespace DevShop2
 
             app.UseHttpsRedirection();
             app.UseStaticFiles(); //uses image in wwwroot folder
-
+            app.UseSession(); 
+            //volgorder is belangrijk, eerst sessions dan routing
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

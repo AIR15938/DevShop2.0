@@ -4,14 +4,16 @@ using DevShop2.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DevShop2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210128222626_ShoppingCartAdded")]
+    partial class ShoppingCartAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,7 +255,7 @@ namespace DevShop2.Migrations
                     b.Property<int?>("CourseId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ShoppingCartId")
+                    b.Property<string>("ShoppinngCartId")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ShoppingCartItemId");

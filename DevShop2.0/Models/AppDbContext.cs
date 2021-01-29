@@ -10,6 +10,7 @@ namespace DevShop2.Models
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
