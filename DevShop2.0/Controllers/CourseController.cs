@@ -1,6 +1,8 @@
 ﻿using DevShop2.Models;
 using DevShop2.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DevShop2.Controllers
 {
@@ -15,17 +17,29 @@ namespace DevShop2.Controllers
             _categoryRepository = categoryRepository;
         }
 
-
-        public IActionResult List()
+        public ViewResult List(string category)
         {
+            IEnumerable<Course> courses;
+            string currentCategory;
 
-            CoursesListViewModel coursesListViewModel = new CoursesListViewModel();
-            coursesListViewModel.Courses = _courseRepository.AllCourses;
+            if (string.IsNullOrEmpty(category))
+            {
+                courses = _courseRepository.AllCourses.OrderBy(p => p.CourseId);
+                currentCategory = "All courses";
+            }
+            else
+            {
+                courses = _courseRepository.AllCourses.Where(p => p.Category.CategoryName == category)
+                    .OrderBy(p => p.CourseId);
+                currentCategory = _categoryRepository.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
+            }
 
-            coursesListViewModel.CurrentCategory = "Courses"; //titel
-            return View(coursesListViewModel);
+            return View(new CoursesListViewModel
+            {
+                Courses = courses,
+                CurrentCategory = currentCategory
+            });
         }
-
         public IActionResult Details(int id)
         {
             var course = _courseRepository.GetCourseById(id);
