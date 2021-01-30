@@ -1,10 +1,6 @@
 ﻿using DevShop2.Models;
 using DevShop2.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DevShop2.Controllers
 {
