@@ -25,6 +25,7 @@ namespace DevShop2
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
             services.AddHttpContextAccessor();
             services.AddSession();
